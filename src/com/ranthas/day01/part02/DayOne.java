@@ -1,5 +1,8 @@
 package com.ranthas.day01.part02;
 
+import com.ranthas.util.FileService;
+import com.ranthas.util.FileServiceImpl;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,9 +13,12 @@ public class DayOne {
     private static final String DATA_INPUT_FILE = "src/com/ranthas/day01/data-input.aoc";
 
     public static void main(String[] args) {
+
+        FileService fileService = new FileServiceImpl();
+
         try {
             long fuelRequiredSum =
-                    readAllLinesFromFile(DATA_INPUT_FILE)
+                    fileService.readAllLinesFromFile(DATA_INPUT_FILE)
                             .stream()
                             .map(stringValue -> calculateFuelRequirement(Long.parseLong(stringValue)))
                             .mapToLong(Long::longValue)
@@ -31,9 +37,5 @@ public class DayOne {
         return massOfFuelRequired <= 0 ?
                 0 :
                 massOfFuelRequired + calculateFuelRequirement(massOfFuelRequired);
-    }
-
-    private static List<String> readAllLinesFromFile(String filePath) throws IOException {
-        return Files.readAllLines(Paths.get(filePath));
     }
 }
