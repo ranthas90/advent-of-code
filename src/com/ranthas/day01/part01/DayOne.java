@@ -17,8 +17,7 @@ public class DayOne {
             long fuelRequiredSum =
                     fileService.readAllLinesFromFile(DATA_INPUT_FILE)
                             .stream()
-                            .map(stringValue -> calculateFuelRequirement(Long.parseLong(stringValue)))
-                            .mapToLong(Long::longValue)
+                            .mapToLong(stringValue -> calculateFuelRequirement(Long.parseLong(stringValue)))
                             .sum();
 
             System.out.println(fuelRequiredSum);
