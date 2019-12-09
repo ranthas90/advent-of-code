@@ -6,4 +6,6 @@ import java.util.List;
 public interface FileService {
 
     List<String> readAllLinesFromFile(String filePath) throws IOException;
+
+    String readFile(String filePath) throws IOException;
 }

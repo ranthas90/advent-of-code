@@ -11,4 +11,9 @@ public class FileServiceImpl implements FileService {
     public List<String> readAllLinesFromFile(String filePath) throws IOException {
         return Files.readAllLines(Paths.get(filePath));
     }
+
+    @Override
+    public String readFile(String filePath) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(filePath)));
+    }
 }
